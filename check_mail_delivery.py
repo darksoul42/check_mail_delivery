@@ -55,8 +55,8 @@ def usage():
     print "    ([-R|--records-root /tmp/mail_check-history.u<UID>.<RECIPIENT>.<SMTP_SERVER>])"
     print "    ([-o|--performance-output] [-f|--performance-file /tmp/check_mail_delivery.rrd])"
     print "    ([-n|--num-mails 1] [-N|--num-threads 1-50])"
-    print "    ([--randomize-body] [--min-message-body-size 1024] [--max-message-body-size 1048576]"
-    print "    ([--max-message-size 65536] [--max-token-per-mailbox 5000] [--max-process-messages 512]"
+    print "    ([--randomize-body] [--min-message-body-size 1024] [--max-message-body-size 65536]"
+    print "    ([--max-message-size 1048576] [--max-token-per-mailbox 5000] [--max-process-messages 512]"
     print "    ([--randomize-sender] [--ignore-sender-check] [--no-message-id] [--clean-mailbox] [--force-mismatch-tokens])"
     print "    ([-h|--help] [-v|--verbose] [-d|--dry-run])"
     print
@@ -101,8 +101,6 @@ def usage():
     print "                                                 Useful if a server in the middle adds headers,"
     print "                                                 and you want to check whether it worked"
     print "    --records-root, -R       <dir>               Sets the directory for tracking sent/received tokens"
-    print "                             SQL:<CONFIG_FILE>   If the argument begins with 'SQL:', read parameters from the file,"
-    print "                                                 and manage tokens in the database"
     print
     print "  Performance tracking :"
     print "    --performance-output, -o                     Output execution performance data in a RRD database"
@@ -114,8 +112,8 @@ def usage():
     print "    --randomize-body                             Generate a random message body"
     print "                                                 Implies checksum verification upon reception"
     print "    --min-message-body-size  1024                Minimum size for an e-mail body, when generating a random body"
-    print "    --max-message-body-size  1048576             Maximum size for an e-mail body, when generating a random body"
-    print "    --max-message-size       65536               Maximum size for an e-mail when receiving it via POP3"
+    print "    --max-message-body-size  65536               Maximum size for an e-mail body, when generating a random body"
+    print "    --max-message-size       1048576             Maximum size for an e-mail when receiving it via POP3"
     print "                                                 When sending e-mails, the message will only go as far as 95% of this size"
     print "                                                 Maximum size for when receiving an e-mail"
     print "    --max-token-per-mailbox  5000                Maximum number of tokens allowed for one mailbox"
@@ -206,7 +204,7 @@ num_mails = 1
 
 min_message_body_size = 1024
 max_message_body_size = 65536
-# Failsafe to ensure we don't kill ourselves with huge mails
+# Failsafe to ensure we don't kill ourselves when receiving huge mails
 max_message_size = 1048576
 # Failsafe to ensure we don't process too many mails
 max_pop_mail_count = 512
