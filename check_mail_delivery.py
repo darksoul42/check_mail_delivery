@@ -46,7 +46,7 @@ from email.utils import parsedate_tz, mktime_tz
 
 def usage():
     print "Usage: %s [-s|--smtp-server mail.<DOMAIN>] [-p|--pop-server pop.<DOMAIN>] ([-t|--timeout 3600])" % sys.argv[0]
-    print "    ([-T|--rcpt-to recipient@<DOMAIN>] [-U|--pop-username <USER>] [-P|--pop-password <PASS>] | [-i|--get-information-from])"
+    print "    ([-T|--rcpt-to recipient@<DOMAIN>] [-U|--pop-username <USER>] [-P|--pop-password <PASS>] | [-i|--get-information-from <FILE>])"
     print "    ([-W|--warning-delay 450] [-C|--critical-delay 1800] [-w|--warning-tokens 50] [-c|--critical-tokens 100])"
     print "    ([-H|--helo-name <uname -n>] [-F|--mail-from sender@<DOMAIN>] [-S|--subject <SUBJECT>])"
     print "    ([-L|--payload-prefix <string>] [-l|--label <LABEL>] [--show-date] [--show-mismatch-tokens])"
